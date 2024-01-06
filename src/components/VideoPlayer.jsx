@@ -2,16 +2,16 @@ import React from 'react'
 import { fabric } from 'fabric';
 import * as faceapi from 'face-api.js';
 import { useRef, useState, useEffect } from 'react';
-import sampleVideoPath1 from '../assests/pexels-kampus-production-5983738 (2160p).mp4'; 
-import sampleVideoPath2 from '../assests/pexels-ivan-samkov-5676151 (1080p).mp4'; 
-import sampleVideoPath3 from '../assests/pexels-kampus-production-7963467 (2160p).mp4'; 
+import sampleVideoPath1 from '../assests/pexels-kampus-production-5983738 (2160p).mp4';
+import sampleVideoPath2 from '../assests/pexels-ivan-samkov-5676151 (1080p).mp4';
+import sampleVideoPath3 from '../assests/pexels-kampus-production-7963467 (2160p).mp4';
 
 
 
 export default function VideoPlayer() {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
-    const sampleVideoRef=useRef(null);
+    const sampleVideoRef = useRef(null);
     const intervalIdRef = useRef(null);
 
 
@@ -19,6 +19,7 @@ export default function VideoPlayer() {
     const [modelsLoaded, setModelsLoaded] = useState(false);
     const [player, setPlayer] = useState(false);
 
+    // Load face detection models on component mount
     useEffect(() => {
         const loadModels = async () => {
             try {
@@ -31,28 +32,38 @@ export default function VideoPlayer() {
         loadModels();
     }, []);
 
+    // Face detection and canvas drawing logic
     useEffect(() => {
         if (modelsLoaded) {
+            // creating fabric canvas
             const canvas = new fabric.Canvas(canvasRef.current);
+
             const displaySize = { width: videoRef.current.width, height: videoRef.current.height };
+
+            // function for face detection
             const drawFaces = async () => {
                 try {
+                    // check for video end status.
                     if (videoRef.current.ended) {
                         setIsPlaying(false);
                     }
+                    // check for video ended or pause status so that we stopping detection check;
                     if (videoRef.current.paused || videoRef.current.ended) {
                         canvas.clear();
                         return;
                     }
                     canvas.clear();
 
+                    // calling api for reconizing faces .
+
                     const detections = await faceapi.detectAllFaces(
                         videoRef.current,
                         new faceapi.TinyFaceDetectorOptions({ scoreThreshold: 0.4 })
                     );
-                    faceapi.matchDimensions(canvasRef.current,displaySize );
+                    faceapi.matchDimensions(canvasRef.current, displaySize);
                     const resizedDetections = faceapi.resizeResults(detections, displaySize);
 
+                    // Drawing rectangles around detected faces
                     resizedDetections.forEach((detection) => {
                         const rect = new fabric.Rect({
                             right: detection.box.right,
@@ -72,15 +83,17 @@ export default function VideoPlayer() {
                 }
             };
 
+            // added time interval for multiple face detection checks while playing the player.
             intervalIdRef.current = setInterval(drawFaces, 300);
 
             return () => {
+                // Cleanup function: Clear intervals 
                 clearInterval(intervalIdRef.current);
-                canvas.dispose();
             };
         }
     }, [modelsLoaded]);
 
+    // Handle play/pause controls
     const handlePlayPause = () => {
         const video = videoRef.current;
         setIsPlaying(!isPlaying);
@@ -91,15 +104,11 @@ export default function VideoPlayer() {
             video.play();
         }
     };
-   const gh=(e)=>{
-    console.log(e.target.style);
-   }
 
-
+    // Handle video upload
     const handleVideoUpload = (e) => {
         const video = videoRef.current;
         const file = e.target.files[0];
-        // console.log(videoRef.current.width)
         if (file) {
             const blobURL = URL.createObjectURL(file);
             video.src = blobURL;
@@ -107,23 +116,23 @@ export default function VideoPlayer() {
             setPlayer(true);
         }
     };
-    const handleSampleVideos=(e)=>{
+
+    // Handle selecting sample videos
+    const handleSampleVideos = (e) => {
         const video = videoRef.current;
-         if(e.target.value){
+        if (e.target.value) {
             const sampleVideoPath = e.target.value;
             video.src = sampleVideoPath;
             console.log(sampleVideoPath)
             setIsPlaying(true);
             setPlayer(true);
             console.log(e.target.value)
-         }
+        }
     }
     return (
         <>
             <div className="heading" >
                 <h2 >Explore Now</h2>
-               
-                {/* <video src={sampleVideoPath} autoPlay controls={false}></video> */}
             </div>
             <div className='btns'>
                 <div>
@@ -139,14 +148,14 @@ export default function VideoPlayer() {
 
             </div>
             {player && <div className="videoControls">
-                <p style={isPlaying?{color:"green"}:{color:"red"}}>{isPlaying ? 'Detecting....' : 'Stoped...'}     </p>
-                <button style={!isPlaying?{background:"green"}:{background:"red"}} onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
+                <p style={isPlaying ? { color: "green" } : { color: "red" }}>{isPlaying ? 'Detecting....' : 'Stoped...'}     </p>
+                <button style={!isPlaying ? { background: "green" } : { background: "red" }} onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
 
             </div>}
 
             <div className='container'>
                 <div className='video'>
-                    <video ref={videoRef} controls={false} autoPlay width="350" height="280"  />
+                    <video ref={videoRef} controls={false} autoPlay width="350" height="280" />
                 </div>
                 <div className='canva'>
                     <canvas ref={canvasRef} width="350" height="280" />
