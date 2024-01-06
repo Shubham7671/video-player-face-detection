@@ -2,11 +2,18 @@ import React from 'react'
 import { fabric } from 'fabric';
 import * as faceapi from 'face-api.js';
 import { useRef, useState, useEffect } from 'react';
+import sampleVideoPath1 from '../assests/pexels-kampus-production-5983738 (2160p).mp4'; 
+import sampleVideoPath2 from '../assests/pexels-ivan-samkov-5676151 (1080p).mp4'; 
+import sampleVideoPath3 from '../assests/pexels-kampus-production-7963467 (2160p).mp4'; 
+
+
 
 export default function VideoPlayer() {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
+    const sampleVideoRef=useRef(null);
     const intervalIdRef = useRef(null);
+
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [modelsLoaded, setModelsLoaded] = useState(false);
@@ -72,7 +79,7 @@ export default function VideoPlayer() {
                 canvas.dispose();
             };
         }
-    }, [modelsLoaded,canvasSize]);
+    }, [modelsLoaded]);
 
     const handlePlayPause = () => {
         const video = videoRef.current;
@@ -92,7 +99,7 @@ export default function VideoPlayer() {
     const handleVideoUpload = (e) => {
         const video = videoRef.current;
         const file = e.target.files[0];
-        console.log(videoRef.current.width)
+        // console.log(videoRef.current.width)
         if (file) {
             const blobURL = URL.createObjectURL(file);
             video.src = blobURL;
@@ -100,27 +107,40 @@ export default function VideoPlayer() {
             setPlayer(true);
         }
     };
+    const handleSampleVideos=(e)=>{
+        const video = videoRef.current;
+         if(e.target.value){
+            const sampleVideoPath = e.target.value;
+            video.src = sampleVideoPath;
+            console.log(sampleVideoPath)
+            setIsPlaying(true);
+            setPlayer(true);
+            console.log(e.target.value)
+         }
+    }
     return (
         <>
             <div className="heading" >
-                {/* <h2 >Try Now</h2>
-                <p>{canvasSize.width + " " + canvasSize.height}</p> */}
+                <h2 >Explore Now</h2>
+               
+                {/* <video src={sampleVideoPath} autoPlay controls={false}></video> */}
             </div>
             <div className='btns'>
                 <div>
                     <label htmlFor="fileInput">Drop Video </label>
                     <input type="file" accept="video/*" id="fileInput" onChange={handleVideoUpload} />
-                    <select name="" id="">
+                    <select name="" id="" ref={sampleVideoRef} onChange={handleSampleVideos} >
                         <option value="">Sample files</option>
-                        <option value=""></option>
-                        <option value=""></option>
+                        <option value={sampleVideoPath1}>File 1</option>
+                        <option value={sampleVideoPath2}>File 2</option>
+                        <option value={sampleVideoPath3}>File 3</option>
                     </select>
                 </div>
 
             </div>
             {player && <div className="videoControls">
-                <h3>Detecting....      </h3>
-                <button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
+                <p style={isPlaying?{color:"green"}:{color:"red"}}>{isPlaying ? 'Detecting....' : 'Stoped...'}     </p>
+                <button style={!isPlaying?{background:"green"}:{background:"red"}} onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
 
             </div>}
 

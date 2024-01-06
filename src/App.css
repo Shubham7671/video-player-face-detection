@@ -90,7 +90,7 @@ nav img {
   display: none;
 }
 .video {
-  /* border: 4px solid rgb(28, 27, 27); */
+  border: 1px solid blueviolet;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,6 +101,8 @@ nav img {
   /* background-clip: padding-box; */
   background-repeat: no-repeat;
   background-color: #ffffff;
+  margin-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .videoControls {
@@ -108,10 +110,10 @@ nav img {
   justify-content: center;
   align-items: center;
 }
-video{
+/* video{
   max-width: 350px;
   max-height: 280px;
-}
+} */
 
 .btns {
   width: 100%;
@@ -160,6 +162,9 @@ video{
   border-radius: 8px;
   cursor: pointer;
 }
+.videoControls p{
+  font-weight: 600;
+}
 
 .btns input {
   padding: 10px 0px;
@@ -192,10 +197,20 @@ video{
     /* border: 1px solid red; */
     /* background-color: red; */
   }
+  .main-container>div:last-child{
+    margin-bottom: 500px;
+  }
   .btns>div{
     width: 90%;
   }
+  .videoControls {
+    width: 95%;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+  }
  
-
+  .btns>div{
+    margin-top: 0px;
+  }
 
 }
