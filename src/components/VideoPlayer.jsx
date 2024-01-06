@@ -1,32 +1,39 @@
 import React from 'react'
 import { fabric } from 'fabric';
 import * as faceapi from 'face-api.js';
-import { useRef,useState,useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 export default function VideoPlayer() {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
-  
-  
+    const intervalIdRef = useRef(null);
+
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [modelsLoaded, setModelsLoaded] = useState(false);
+
+   
+
     const handlePlayPause = () => {
-      const video = videoRef.current;
-      setIsPlaying(!isPlaying);
-  
-      if (isPlaying) {
-        video.pause();
-      } else {
-        video.play();
-      }
+        const video = videoRef.current;
+        setIsPlaying(!isPlaying);
+
+        if (isPlaying) {
+            video.pause();
+        } else {
+            video.play();
+        }
     };
-  
+
+
+
     const handleVideoUpload = (e) => {
-      const video = videoRef.current;
-      const file = e.target.files[0];
-  
-      if (file) {
-        const blobURL = URL.createObjectURL(file);
-        video.src = blobURL;
-      }
+        const video = videoRef.current;
+        const file = e.target.files[0];
+
+        if (file) {
+            const blobURL = URL.createObjectURL(file);
+            video.src = blobURL;
+        }
     };
     return (
         <>
