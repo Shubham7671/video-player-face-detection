@@ -10,6 +10,7 @@ export default function VideoPlayer() {
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [modelsLoaded, setModelsLoaded] = useState(false);
+    const [player, setPlayer] = useState(false);
 
     useEffect(() => {
         const loadModels = async () => {
@@ -27,7 +28,6 @@ export default function VideoPlayer() {
         if (modelsLoaded) {
             const canvas = new fabric.Canvas(canvasRef.current);
             const displaySize = { width: videoRef.current.width, height: videoRef.current.height };
-
             const drawFaces = async () => {
                 try {
                     if (videoRef.current.ended) {
@@ -41,17 +41,15 @@ export default function VideoPlayer() {
 
                     const detections = await faceapi.detectAllFaces(
                         videoRef.current,
-                        new faceapi.TinyFaceDetectorOptions({ scoreThreshold: 0.3 })
+                        new faceapi.TinyFaceDetectorOptions({ scoreThreshold: 0.4 })
                     );
-
+                    faceapi.matchDimensions(canvasRef.current,displaySize );
                     const resizedDetections = faceapi.resizeResults(detections, displaySize);
 
                     resizedDetections.forEach((detection) => {
-                        console.log(detection);
-                        // console.log(detection.box.right);
                         const rect = new fabric.Rect({
-                            right:detection.box.right,
-                            bottom:detection.box.bottom,
+                            right: detection.box.right,
+                            bottom: detection.box.bottom,
                             left: detection.box.left,
                             top: detection.box.top,
                             width: detection.box.width,
@@ -67,14 +65,14 @@ export default function VideoPlayer() {
                 }
             };
 
-            intervalIdRef.current = setInterval(drawFaces, 400);
+            intervalIdRef.current = setInterval(drawFaces, 300);
 
             return () => {
                 clearInterval(intervalIdRef.current);
                 canvas.dispose();
             };
         }
-    }, [modelsLoaded]);
+    }, [modelsLoaded,canvasSize]);
 
     const handlePlayPause = () => {
         const video = videoRef.current;
@@ -86,50 +84,54 @@ export default function VideoPlayer() {
             video.play();
         }
     };
+   const gh=(e)=>{
+    console.log(e.target.style);
+   }
 
-    
 
     const handleVideoUpload = (e) => {
         const video = videoRef.current;
         const file = e.target.files[0];
-
+        console.log(videoRef.current.width)
         if (file) {
             const blobURL = URL.createObjectURL(file);
             video.src = blobURL;
-            setIsPlaying(true)
+            setIsPlaying(true);
+            setPlayer(true);
         }
     };
     return (
         <>
-          
-
+            <div className="heading" >
+                {/* <h2 >Try Now</h2>
+                <p>{canvasSize.width + " " + canvasSize.height}</p> */}
+            </div>
             <div className='btns'>
                 <div>
-                    <input type="file" accept="video/*" onChange={handleVideoUpload} />
-                
-                   
+                    <label htmlFor="fileInput">Drop Video </label>
+                    <input type="file" accept="video/*" id="fileInput" onChange={handleVideoUpload} />
                     <select name="" id="">
                         <option value="">Sample files</option>
                         <option value=""></option>
                         <option value=""></option>
-                        
                     </select>
                 </div>
-                
+
             </div>
-            <div className="videoControls">
-            <button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
-            </div>
+            {player && <div className="videoControls">
+                <h3>Detecting....      </h3>
+                <button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
+
+            </div>}
 
             <div className='container'>
                 <div className='video'>
-                    <video ref={videoRef} controls={false} width="350" height="280" autoPlay />
+                    <video ref={videoRef} controls={false} autoPlay width="350" height="280"  />
                 </div>
                 <div className='canva'>
                     <canvas ref={canvasRef} width="350" height="280" />
                 </div>
             </div>
-
         </>
     )
 }
