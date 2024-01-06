@@ -2,7 +2,6 @@
   padding: 0%;
   margin: 0%;
   box-sizing: border-box;
-  /* font-family: sans-serif; */
 }
 
 body {
@@ -35,9 +34,9 @@ nav img {
 
 .main-container>div {
   width: 50%;
-  /* border: 1px solid red; */
 }
-.main-container>div:last-child{
+
+.main-container>div:last-child {
   background-color: white;
   margin: 0;
 }
@@ -45,7 +44,6 @@ nav img {
 .heading {
   text-align: center;
   width: 90%;
-  /* margin: auto; */
   margin: 60px auto;
 }
 
@@ -59,19 +57,19 @@ nav img {
   color: rgb(101, 100, 100);
   margin-top: 10px;
 }
-.heading h2{
+
+.heading h2 {
   font-size: xx-large;
   font-family: 'Times New Roman', Times, serif;
   border-bottom: 3px solid blueviolet;
   display: inline;
   padding: 10px 20px;
   color: blueviolet;
-  
+
 }
 
 .container {
   position: relative;
-  /* border: 1px solid  green; */
   display: flex;
   justify-content: center;
 
@@ -83,12 +81,12 @@ nav img {
   justify-content: center;
   align-items: center;
   position: absolute;
-  /* border: 1px solid red; */
-
 }
-#fileInput{
+
+#fileInput {
   display: none;
 }
+
 .video {
   border: 1px solid blueviolet;
   display: flex;
@@ -98,7 +96,6 @@ nav img {
   background-image: url("https://gifs.eco.br/wp-content/uploads/2022/08/gifs-de-click-0.gif");
   background-position: center;
   background-size: 100%;
-  /* background-clip: padding-box; */
   background-repeat: no-repeat;
   background-color: #ffffff;
   margin-top: 10px;
@@ -110,10 +107,6 @@ nav img {
   justify-content: center;
   align-items: center;
 }
-/* video{
-  max-width: 350px;
-  max-height: 280px;
-} */
 
 .btns {
   width: 100%;
@@ -122,10 +115,9 @@ nav img {
   justify-content: center;
   align-items: center;
   padding: 10px 0px;
-
-
 }
-.btns>div{
+
+.btns>div {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -134,18 +126,18 @@ nav img {
   margin: auto;
   padding-bottom: 5px;
   margin-top: 10px;
-  
+
 }
-.btns label{
+
+.btns label {
   padding: 10px 20px;
   color: white;
   background-color: blueviolet;
-  /* border: none; */
   font-size: 15px;
-  /* border-radius: 8px; */
   cursor: pointer;
 }
-.videoControls{
+
+.videoControls {
   width: 80%;
   margin: auto;
   display: flex;
@@ -162,7 +154,8 @@ nav img {
   border-radius: 8px;
   cursor: pointer;
 }
-.videoControls p{
+
+.videoControls p {
   font-weight: 600;
 }
 
@@ -175,7 +168,6 @@ nav img {
 
 .btns select {
   padding: 10px 5px;
-  /* border: none; */
   border: 1px solid blueviolet;
   font-size: 16px;
 }
@@ -184,7 +176,8 @@ nav img {
   nav {
     padding: 5px 7px;
   }
-  nav img{
+
+  nav img {
     width: 140px;
   }
 
@@ -194,22 +187,22 @@ nav img {
 
   .main-container>div {
     width: 98%;
-    /* border: 1px solid red; */
-    /* background-color: red; */
   }
-  .main-container>div:last-child{
+
+  .main-container>div:last-child {
     margin-bottom: 500px;
   }
-  .btns>div{
+
+  .btns>div {
     width: 90%;
   }
+
   .videoControls {
     width: 95%;
     justify-content: space-between;
-    /* border: 1px solid red; */
   }
- 
-  .btns>div{
+
+  .btns>div {
     margin-top: 0px;
   }
 
