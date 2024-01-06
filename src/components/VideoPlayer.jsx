@@ -57,7 +57,7 @@ export default function VideoPlayer() {
                             width: detection.box.width,
                             height: detection.box.height,
                             fill: 'transparent',
-                            strokeWidth: 1,
+                            strokeWidth: 2,
                             stroke: 'green',
                         });
                         canvas.add(rect);
@@ -101,16 +101,24 @@ export default function VideoPlayer() {
     };
     return (
         <>
-            <div className="heading" >
-                <h1 >Face Detection System</h1>
-                <h4 >The Video Face Detection Project, a React app with face-api.js, enables real-time face detection in uploaded videos or webcam streams. </h4>
-            </div>
+          
 
             <div className='btns'>
                 <div>
                     <input type="file" accept="video/*" onChange={handleVideoUpload} />
-                    <button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
+                
+                   
+                    <select name="" id="">
+                        <option value="">Sample files</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        
+                    </select>
                 </div>
+                
+            </div>
+            <div className="videoControls">
+            <button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
             </div>
 
             <div className='container'>
