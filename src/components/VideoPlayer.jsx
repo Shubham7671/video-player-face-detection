@@ -155,10 +155,10 @@ export default function VideoPlayer() {
 
             <div className='container'>
                 <div className='video'>
-                    <video ref={videoRef} controls={false} autoPlay width="350" height="280" />
+                    <video ref={videoRef} controls={false} autoPlay width="375" height="230" />
                 </div>
                 <div className='canva'>
-                    <canvas ref={canvasRef} width="350" height="280" />
+                    <canvas ref={canvasRef} width="375" height="240" />
                 </div>
             </div>
         </>
