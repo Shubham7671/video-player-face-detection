@@ -19,10 +19,11 @@
 
 <!-- Screenshots -->
 <p align="center">
-<img src="https://github.com/Shubham7671/video-player-face-detection/assets/121150193/f7a49d52-aa9a-499a-b06c-5116e852c0c4" alt="Screenshot 1" width="100" height="auto">
+<img src="https://github.com/Shubham7671/video-player-face-detection/assets/121150193/f7a49d52-aa9a-499a-b06c-5116e852c0c4" alt="Screenshot 1" width="1000" height="auto">
 
+![localhost_3000_(iPhone 12 Pro) (2)](https://github.com/Shubham7671/video-player-face-detection/assets/121150193/b47f9a6b-7c88-40ee-b99a-fd92e20cd185)
 
-  <img src="./screenshots/screenshot2.png" alt="Screenshot 2" width="400" height="auto">
+  <img src="https://github.com/Shubham7671/video-player-face-detection/assets/121150193/b47f9a6b-7c88-40ee-b99a-fd92e20cd185" alt="Screenshot 2" width="500" height="auto">
 </p>
 
 <!-- Technologies Used -->
