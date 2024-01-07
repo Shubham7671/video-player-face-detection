@@ -19,7 +19,9 @@
 
 <!-- Screenshots -->
 <p align="center">
-  <img src="./screenshots/screenshot1.png" alt="Screenshot 1" width="400" height="auto">
+<!--   <img src="./screenshots/screenshot1.png" alt="Screenshot 1" width="400" height="auto"> -->
+  ![Screenshot 2024-01-07 055439](https://github.com/Shubham7671/video-player-face-detection/assets/121150193/f7a49d52-aa9a-499a-b06c-5116e852c0c4)
+
   <img src="./screenshots/screenshot2.png" alt="Screenshot 2" width="400" height="auto">
 </p>
 
