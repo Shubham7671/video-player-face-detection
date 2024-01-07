@@ -17,6 +17,14 @@
   <a href="#license">License</a> •
   <a href="#acknowledgments">Acknowledgments</a>
 </p>
+<!-- Technologies Used -->
+<p align="center">
+  <b>Technologies Used:</b>
+  <br>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=white" alt="React">
+  <img src="https://img.shields.io/badge/fabric.js-FFD700?style=flat&logo=fabric&logoColor=white" alt="fabric.js">
+  <img src="https://img.shields.io/badge/face--api.js-FF6347?style=flat&logoColor=white" alt="face-api.js">
+</p>
 
 <!-- Screenshots -->
 <p align="center">
@@ -31,14 +39,7 @@
 
 Check out the live demo: [Face Detection Video Player](https://earnest-narwhal-3bc577.netlify.app)
 
-<!-- Technologies Used -->
-<p align="center">
-  <b>Technologies Used:</b>
-  <br>
-  <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=white" alt="React">
-  <img src="https://img.shields.io/badge/fabric.js-FFD700?style=flat&logo=fabric&logoColor=white" alt="fabric.js">
-  <img src="https://img.shields.io/badge/face--api.js-FF6347?style=flat&logoColor=white" alt="face-api.js">
-</p>
+
 
 <!-- How to Run Locally -->
 <h2 align="center">How to Run Locally</h2>
