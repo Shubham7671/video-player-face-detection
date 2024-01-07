@@ -19,7 +19,7 @@
 
 <!-- Screenshots -->
 <p align="center">
-<img src="https://github.com/Shubham7671/video-player-face-detection/assets/121150193/f7a49d52-aa9a-499a-b06c-5116e852c0c4" alt="Screenshot 1" width="400" height="auto">
+<img src="https://github.com/Shubham7671/video-player-face-detection/assets/121150193/f7a49d52-aa9a-499a-b06c-5116e852c0c4" alt="Screenshot 1" width="100" height="auto">
 
 
   <img src="./screenshots/screenshot2.png" alt="Screenshot 2" width="400" height="auto">
