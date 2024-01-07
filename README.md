@@ -8,6 +8,7 @@
 <p align="center">
   <a href="#screenshots">Screenshots</a> •
   <a href="#technologies-used">Technologies Used</a> •
+   <a href="#live-demo">Live Demo</a>
   <a href="#how-to-run-locally">How to Run Locally</a> •
   <a href="#features">Features</a> •
   <a href="#usage-examples">Usage Examples</a> •
@@ -24,6 +25,11 @@
    <h2 align="center">Small Screen </h2>
   <img src="https://github.com/Shubham7671/video-player-face-detection/assets/121150193/b47f9a6b-7c88-40ee-b99a-fd92e20cd185" alt="Screenshot 2" width="300" height="auto">
 </p>
+
+<!-- Live Demo -->
+<h2 align="center">Live Demo</h2>
+
+Check out the live demo: [Face Detection Video Player](https://earnest-narwhal-3bc577.netlify.app)
 
 <!-- Technologies Used -->
 <p align="center">
