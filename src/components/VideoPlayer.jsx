@@ -9,6 +9,7 @@ import sampleVideoPath3 from '../assests/pexels-kampus-production-7963467 (2160p
 
 
 export default function VideoPlayer() {
+
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const sampleVideoRef = useRef(null);
@@ -18,6 +19,101 @@ export default function VideoPlayer() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [modelsLoaded, setModelsLoaded] = useState(false);
     const [player, setPlayer] = useState(false);
+
+
+    const containerRef = useRef(null);
+    const boxRef = useRef(null);
+    const isClicked = useRef(false);
+
+    const coordinates = useRef({
+        startX: 0,
+        startY: 0,
+        lastX: 0,
+        lastY: 0,
+    });
+
+    useEffect(() => {
+        if (!boxRef.current || !containerRef.current) return;
+
+        const box = boxRef.current;
+        const container = containerRef.current;
+
+        const onTouchStart = (e) => {
+            isClicked.current = true;
+            coordinates.current.startX = e.touches[0].clientX;
+            coordinates.current.startY = e.touches[0].clientY;
+        };
+
+        const onTouchEnd = () => {
+            isClicked.current = false;
+            coordinates.current.lastX = box.offsetLeft;
+            coordinates.current.lastY = box.offsetTop;
+        };
+
+        const onTouchMove = (e) => {
+            if (!isClicked.current) return;
+
+            const nextX = e.touches[0].clientX - coordinates.current.startX + coordinates.current.lastX;
+            const nextY = e.touches[0].clientY - coordinates.current.startY + coordinates.current.lastY;
+
+            box.style.top = `${nextY}px`;
+            box.style.left = `${nextX}px`;
+        };
+
+
+        const onMouseDown = (e) => {
+            isClicked.current = true;
+            coordinates.current.startX = e.clientX;
+            coordinates.current.startY = e.clientY;
+        };
+
+        const onMouseUp = () => {
+            isClicked.current = false;
+            coordinates.current.lastX = box.offsetLeft;
+            coordinates.current.lastY = box.offsetTop;
+        };
+ 
+        
+        const onMouseMove = (e) => {
+            if (!isClicked.current) return;
+
+            const nextX = e.clientX - coordinates.current.startX + coordinates.current.lastX;
+            const nextY = e.clientY - coordinates.current.startY + coordinates.current.lastY;
+
+            box.style.top = `${nextY}px`;
+            box.style.left = `${nextX}px`;
+        };
+
+        // events for handling drag in small devices
+
+        box.addEventListener('touchstart', onTouchStart);
+        box.addEventListener('touchend', onTouchEnd);
+        box.addEventListener('touchmove', onTouchMove);
+        
+
+        // events for handling drag in larger devices
+
+        box.addEventListener('mousedown', onMouseDown);
+        box.addEventListener('mouseup', onMouseUp);
+        container.addEventListener('mousemove', onMouseMove);
+        container.addEventListener('mouseleave', onMouseUp);
+
+
+        // cleaning events listner saves memory
+        const cleanup = () => {
+
+            box.removeEventListener('touchstart', onTouchStart);
+            box.removeEventListener('touchend', onTouchEnd);
+            box.removeEventListener('touchmove', onTouchMove);
+            box.removeEventListener('mousedown', onMouseDown);
+            box.removeEventListener('mouseup', onMouseUp);
+            container.removeEventListener('mousemove', onMouseMove);
+            container.removeEventListener('mouseleave', onMouseUp);
+        };
+
+        return cleanup;
+    }, []);
+
 
     // Load face detection models on component mount
     useEffect(() => {
@@ -147,18 +243,22 @@ export default function VideoPlayer() {
                 </div>
 
             </div>
-            {player && <div className="videoControls">
-                <p style={isPlaying ? { color: "green" } : { color: "red" }}>{isPlaying ? 'Detecting....' : 'Stoped...'}     </p>
-                <button style={!isPlaying ? { background: "green" } : { background: "red" }} onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
+            <div className='container' ref={containerRef}>
+                <div className='box' ref={boxRef}>
 
-            </div>}
+                    {player && <div className="videoControls">
+                        <button style={!isPlaying ? { border: "2px solid green", color: "green" } : { border: "2px solid red", color: "red" }} onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
+                        <p style={isPlaying ? { color: "green" } : { color: "red" }}>{isPlaying ? 'Detecting....' : 'Stoped...'}     </p>
 
-            <div className='container'>
-                <div className='video'>
-                    <video ref={videoRef} controls={false} autoPlay width="375" height="230" />
-                </div>
-                <div className='canva'>
-                    <canvas ref={canvasRef} width="375" height="240" />
+
+                    </div>}
+
+                    <div className='video'>
+                        <video ref={videoRef} controls={false} autoPlay width="375" height="230" />
+                    </div>
+                    <div className='canva'>
+                        <canvas ref={canvasRef} width="375" height="240" />
+                    </div>
                 </div>
             </div>
         </>

@@ -70,8 +70,9 @@ nav img {
 
 .container {
   position: relative;
-  display: flex;
-  justify-content: center;
+  width: 50%;
+  margin: auto;
+  cursor: grab;
 
 }
 
@@ -81,6 +82,7 @@ nav img {
   justify-content: center;
   align-items: center;
   position: absolute;
+  cursor: grab;
 }
 
 #fileInput {
@@ -128,6 +130,9 @@ nav img {
   margin-top: 10px;
 
 }
+canvas{
+  cursor: grab;
+}
 
 .btns label {
   padding: 10px 20px;
@@ -138,25 +143,22 @@ nav img {
 }
 
 .videoControls {
-  width: 80%;
+  width: auto;
   margin: auto;
-  display: flex;
-  justify-content: space-around;
-  color: red;
 }
 
 .videoControls button {
-  padding: 10px 20px;
-  color: white;
-  background-color: green;
-  border: none;
-  font-size: 15px;
+  padding: 8px 18px;
+  background-color: transparent;
+  font-size: 12px;
   border-radius: 8px;
   cursor: pointer;
+  background-color: none;
 }
 
 .videoControls p {
   font-weight: 600;
+  margin-left: 20px;
 }
 
 .btns input {
@@ -172,6 +174,13 @@ nav img {
   font-size: 16px;
 }
 
+video {
+  max-width: 450px;
+  cursor: grab;
+
+}
+
+
 @media only screen and (max-width: 600px) {
   nav {
     padding: 5px 7px;
@@ -179,6 +188,9 @@ nav img {
 
   nav img {
     width: 140px;
+  }
+  .container{
+    width: 95%;
   }
 
   .main-container {
@@ -206,4 +218,9 @@ nav img {
     margin-top: 0px;
   }
 
+}
+
+.box {
+  position: absolute;
+  cursor: grab;
 }

@@ -8,8 +8,6 @@ function App() {
   return (
     <>
       <NavBar />
-
-
       <div className='main-container'>
         <div>
           <PlayerDescription />
