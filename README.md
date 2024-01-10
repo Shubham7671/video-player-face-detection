@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+<!-- Project Title -->
+<h1 align="center">Face Detection Video Player</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- Project Description -->
+<p align="center">A web application that uses face detection to identify faces in videos. Built with React, fabric.js, and face-api.js.</p>
 
-## Available Scripts
+<!-- Table of Contents -->
+<p align="center">
+  <a href="#screenshots">Screenshots</a> •
+  <a href="#technologies-used">Technologies Used</a> •
+   <a href="#live-demo">Live Demo</a>
+  <a href="#how-to-run-locally">How to Run Locally</a> •
+  <a href="#features">Features</a> •
+  <a href="#usage-examples">Usage Examples</a> •
+  <a href="#contribution-guidelines">Contribution Guidelines</a> •
+  <a href="#issues-and-bug-reports">Issues and Bug Reports</a> •
+  <a href="#license">License</a> •
+  <a href="#acknowledgments">Acknowledgments</a>
+</p>
+<!-- Technologies Used -->
+<p align="center">
+  <b>Technologies Used:</b>
+  <br>
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=white" alt="React">
+  <img src="https://img.shields.io/badge/fabric.js-FFD700?style=flat&logo=fabric&logoColor=white" alt="fabric.js">
+  <img src="https://img.shields.io/badge/face--api.js-FF6347?style=flat&logoColor=white" alt="face-api.js">
+</p>
 
-In the project directory, you can run:
+<!-- Screenshots -->
+<p align="center">
+  <h2 align="center">Large Screen </h2>
+   <img src="https://github.com/Shubham7671/video-player-face-detection/assets/121150193/f7a49d52-aa9a-499a-b06c-5116e852c0c4" alt="Screenshot 1" width="1000" height="auto">
+   <h2 align="center">Small Screen </h2>
+  <img src="https://github.com/Shubham7671/video-player-face-detection/assets/121150193/b47f9a6b-7c88-40ee-b99a-fd92e20cd185" alt="Screenshot 2" width="300" height="auto">
+</p>
 
-### `npm start`
+<!-- Live Demo -->
+<h2 align="center">Live Demo</h2>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Check out the live demo: [Face Detection Video Player](https://earnest-narwhal-3bc577.netlify.app)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- How to Run Locally -->
+<h2 align="center">How to Run Locally</h2>
 
-### `npm run build`
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/Shubham7671/face-detection-video-player.git
+Navigate to the Project Directory:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+bash
+Copy code
+cd face-detection-video-player
+Install Dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+bash
+Copy code
+npm install
+Start the Development Server:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+bash
+Copy code
+npm start
+Open in Your Browser:
+Open your browser and go to http://localhost:3000 to view the project.
 
-### `npm run eject`
+<!-- Features -->
+<h2 align="center">Features</h2>
+Face Detection: Identify faces in uploaded or sample videos.
+Dynamic Drawing: Utilize fabric.js to dynamically draw rectangles around detected faces.
+Responsive Controls: Enjoy a user-friendly video player with responsive controls.
+<!-- Usage Examples -->
+<h2 align="center">Usage Examples</h2>
+Include usage examples or code snippets here. Demonstrate how to integrate the Face Detection Video Player component into your own React projects.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+jsx
+Copy code
+import React from 'react';
+import FaceDetectionVideoPlayer from 'face-detection-video-player';
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+function App() {
+  return (
+    <div>
+      <FaceDetectionVideoPlayer />
+    </div>
+  );
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+export default App;
+<!-- Contribution Guidelines -->
+<h2 align="center">Contribution Guidelines</h2>
+Contributions are welcome! If you want to contribute to this project, please open an issue first to discuss the changes.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- Issues and Bug Reports -->
+<h2 align="center">Issues and Bug Reports</h2>
+If you encounter any issues or find a bug, please open an issue on GitHub.
 
-## Learn More
+<!-- License -->
+<h2 align="center">License</h2>
+This project is licensed under the MIT License - see the LICENSE.md file for details.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- Acknowledgments -->
+<h2 align="center">Acknowledgments</h2>
+The face-api.js library for face detection.
+The fabric.js library for canvas drawing.
